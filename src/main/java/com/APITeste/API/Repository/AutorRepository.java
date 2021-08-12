@@ -1,5 +1,9 @@
 package com.APITeste.API.Repository;
 
-public class AutorRepository {
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+import com.APITeste.API.models.Autor;
 
+@Repository
+public interface AutorRepository extends CrudRepository<Autor, Integer>{
 }

@@ -7,6 +7,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+@AllArgsConstructor
 @Entity
 @Table(name = "Autor")
 public class Autor{
@@ -14,11 +21,11 @@ public class Autor{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "Id")
-	private int id;
+	public int id;
 	
 	@Column(name = "Autor", nullable = false)
-	private String filme;
+	public String filme;
 	
 	@Column(name = "Nascimento", nullable = false)
-	private String nascimento;
+	public int nascimento;
 }

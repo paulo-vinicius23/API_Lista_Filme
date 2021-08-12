@@ -1,5 +1,8 @@
 package com.APITeste.API.Repository;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+import com.APITeste.API.models.Filme;
 
-public class FilmeRepository {
-
+@Repository
+public interface FilmeRepository extends CrudRepository<Filme, Integer>{
 }
