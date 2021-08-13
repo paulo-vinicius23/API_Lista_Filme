@@ -7,15 +7,22 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+@AllArgsConstructor
 @Entity
-@Table(name = "Genero")
-public class Genero{
+@Table(name = "Categoria")
+public class Categoria{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "Id")
-	private int id;
+	public int id;
 	
-	@Column(name = "Genero", nullable = false)
-	private String genero;
+	@Column(name = "Categoria", nullable = false)
+	public String categoria;
 }
