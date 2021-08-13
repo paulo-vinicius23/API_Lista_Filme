@@ -27,8 +27,5 @@ public class Filme{
 	public String filme;
 	
 	@Column(name = "Ano", nullable = false)
-	public int ano;
-	
-	@Column(name = "Genero", nullable = false)
-	public int genero;
+	public String ano;
 }

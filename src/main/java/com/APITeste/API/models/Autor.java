@@ -6,7 +6,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -27,5 +26,5 @@ public class Autor{
 	public String filme;
 	
 	@Column(name = "Nascimento", nullable = false)
-	public int nascimento;
+	public String nascimento;
 }
