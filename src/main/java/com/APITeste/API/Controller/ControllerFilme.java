@@ -1,14 +1,14 @@
 package com.APITeste.API.Controller;
 
-import java.util.Optional; 
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import com.APITeste.API.Services.AutorService;
 import com.APITeste.API.Services.FilmeService;
 import com.APITeste.API.models.Filme;
 
@@ -32,7 +32,7 @@ public class ControllerFilme {
 	
 	@PostMapping(value = "/salvar-filme", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public Filme saveFilme(Filme fil){
+	public Filme saveFilme(@RequestBody Filme fil){
 		return filme.saveFilme(fil);
 	}
 }
