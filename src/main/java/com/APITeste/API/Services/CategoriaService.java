@@ -1,5 +1,6 @@
 package com.APITeste.API.Services;
 
+import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,11 +18,15 @@ public class CategoriaService{
 		return categoria.findById(Id);
 	}
 	
-	public Iterable<Categoria> findAll(){
+	public List<Categoria> findAll(){
 		return categoria.findAll();
 	}
 	
 	public Categoria saveCategoria(Categoria cat){
 		return categoria.save(cat);
+	}
+	
+	public void deleteCategoria(Integer cat){
+		categoria.deleteById(cat);
 	}
 }
