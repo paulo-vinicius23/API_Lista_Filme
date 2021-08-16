@@ -29,6 +29,15 @@ public class Filme{
 	@Column(name = "Ano", nullable = false)
 	public String ano;
 	
+	@Column(name = "Sinopse", nullable = false)
+	public String sinopse;
+	
+	@Column(name = "Duração", nullable = false)
+	public String duracao;
+	
+	@Column(name = "Nota", nullable = false)
+	public double nota;
+	
 	@ManyToOne
 	public Autor autor;
 	

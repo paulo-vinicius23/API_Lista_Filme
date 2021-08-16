@@ -24,4 +24,10 @@ public class Categoria{
 	
 	@Column(name = "Categoria", nullable = false)
 	public String categoria;
+	
+	@Column(name = "Tag", nullable = false)
+	public String tag;
+	
+	@Column(name = "Idioma", nullable = false)
+	public String idioma;
 }
