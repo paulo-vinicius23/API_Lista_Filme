@@ -7,6 +7,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.springframework.stereotype.Indexed;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;

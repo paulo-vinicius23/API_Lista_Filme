@@ -25,6 +25,6 @@ public class Autor{
 	@Column(name = "Autor", nullable = false)
 	public String filme;
 	
-//	@Column(name = "Nascimento", nullable = false)
-//	public String nascimento;
+	@Column(name = "Nascimento", nullable = false)
+	public String nascimento;
 }
