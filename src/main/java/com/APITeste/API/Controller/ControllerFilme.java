@@ -4,7 +4,9 @@ import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,10 +22,10 @@ public class ControllerFilme {
 	@Autowired
 	FilmeService filme;
 	
-	@RequestMapping("/filme/{id}")
+	@GetMapping("/filme/{fil}")
 	@ResponseBody
-	public Optional<Filme> getFilme(@RequestParam Integer id){
-		return filme.findById(id);
+	public List<Filme> getFilme(@PathVariable(value= "fil") String fil){
+		return filme.findByName(fil);
 	}
 	
 	@GetMapping(value = "/todos-filmes", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -40,7 +42,7 @@ public class ControllerFilme {
 	
 	@GetMapping(value = "/delete-filme/{id}")
 	@ResponseBody
-	public String deleteFilmeById(@RequestParam Integer id) {
+	public String deleteFilmeById(@PathVariable(value= "id") Integer id) {
 		filme.deleteFilme(id);
 		return "Categoria de id " + id + " deletada.";
 	}
