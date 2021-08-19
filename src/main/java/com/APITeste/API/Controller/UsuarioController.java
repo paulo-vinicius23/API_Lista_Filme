@@ -32,7 +32,7 @@ public class UsuarioController {
 		return usuario.findAll();
 	}
 	
-	@PostMapping(value = "/salvar-usuario/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(value = "/salvar-usuario", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public Usuario saveUsuario(@RequestBody Usuario usu){
 		return usuario.saveUsuario(usu);

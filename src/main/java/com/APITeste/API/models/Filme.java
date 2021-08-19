@@ -42,8 +42,11 @@ public class Filme{
 	public double nota;
 	
 	@ManyToOne
-	public Autor autor;
+	public Diretor diretor;
 	
 	@ManyToOne
-	public Categoria ctegoria;
+	public Categoria categoria;
+	
+	@ManyToOne
+	public Idioma idioma;
 }

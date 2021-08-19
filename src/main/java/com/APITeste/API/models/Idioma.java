@@ -5,7 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,20 +14,17 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @Entity
-@Table(name = "Categoria")
-public class Categoria{
-	
+@Table(name = "Idioma")
+public class Idioma {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "Id")
 	public int id;
 	
-	@Column(name = "Categoria", nullable = false)
-	public String categoria;
+	@Column(name = "Idioma", nullable = false)
+	public String idioma;
 	
 	@Column(name = "Tag", nullable = false)
 	public String tag;
-	
-	@ManyToOne
-	public Idioma idioma;
 }

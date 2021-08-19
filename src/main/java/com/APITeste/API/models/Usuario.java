@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -34,12 +35,12 @@ public class Usuario{
 		@Column(name = "Email", nullable = false)
 		public String email;
 		
-		@Column(name = "Senha", nullable = false)
-		public String senha;
-		
 		@Column(name = "Perfil", nullable = false)
 		public String perfil;
 		
-		@Column(name = "Idioma", nullable = false)
-		public String idioma;
+		@Column(name = "Senha", nullable = false)
+		public String senha;
+		
+		@ManyToOne
+		public Idioma idioma;
 }
