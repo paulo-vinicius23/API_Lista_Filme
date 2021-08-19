@@ -14,16 +14,16 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @Entity
-@Table(name = "Autor")
-public class Autor{
+@Table(name = "Diretor")
+public class Diretor{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "Id")
 	public int id;
 	
-	@Column(name = "Autor", nullable = false)
-	public String filme;
+	@Column(name = "Diretor", nullable = false)
+	public String diretor;
 	
 	@Column(name = "Nascimento", nullable = false)
 	public String nascimento;

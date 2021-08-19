@@ -33,7 +33,7 @@ public class ControllerCategoria {
 			return categoria.findAll();
 		}
 		
-		@PostMapping(value = "/salvar-categoria/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+		@PostMapping(value = "/salvar-categoria", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 		@ResponseBody
 		public Categoria saveCategoria(@RequestBody Categoria cat){
 			return categoria.saveCategoria(cat);

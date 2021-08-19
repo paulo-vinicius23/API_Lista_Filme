@@ -19,6 +19,10 @@ public class FilmeService {
 		return filme.searchName(fil);
 	}
 	
+	public Optional<Filme> findById(Integer id){
+		return filme.findById(id);
+	}
+	
 	public List<Filme> findAll(){
 		return filme.findAll();
 	}
