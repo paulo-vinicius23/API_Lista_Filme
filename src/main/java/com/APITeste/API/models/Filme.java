@@ -46,4 +46,7 @@ public class Filme{
 	
 	@ManyToOne
 	public Categoria categoria;
+	
+	@ManyToOne
+	public Idioma idioma;
 }
