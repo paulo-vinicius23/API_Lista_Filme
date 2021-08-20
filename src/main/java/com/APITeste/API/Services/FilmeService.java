@@ -1,11 +1,12 @@
 package com.APITeste.API.Services;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import com.APITeste.API.Repository.FilmeRepository;
+import com.APITeste.API.models.Categoria;
 import com.APITeste.API.models.Filme;
 
 
@@ -15,8 +16,20 @@ public class FilmeService {
 	@Autowired
 	FilmeRepository filme;
 	
+	@Autowired
+	CategoriaService categoria;
+	
 	public List<Filme> findByName(String fil){
 		return filme.searchName(fil);
+	}
+	
+	public List<Filme> findByCategoria(Integer id){
+		Optional<Categoria> cat = categoria.findById(id);
+		List<Filme> fil = new ArrayList<Filme>();
+		if (cat.isPresent()) {
+			fil = filme.findByCategoria(cat.get());
+		}
+		return fil;
 	}
 	
 	public Optional<Filme> findById(Integer id){
