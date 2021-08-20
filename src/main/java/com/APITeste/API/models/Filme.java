@@ -29,6 +29,9 @@ public class Filme{
 	@Column(name = "Ano", nullable = false)
 	public String ano;
 	
+	@Column(name = "Imagem", nullable = false)
+	public String imagem;
+	
 	@Column(name = "Sinopse", nullable = false)
 	public String sinopse;
 	

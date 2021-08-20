@@ -1,6 +1,7 @@
 package com.APITeste.API.Controller;
 
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,13 +19,20 @@ import com.APITeste.API.models.Filme;
 @RestController
 @RequestMapping("/")
 public class ControllerFilme {
-	@Autowired
-	FilmeService filme;
 	
 	@Autowired
 	DiretorService diretor;
 	
-	@GetMapping("/filme/{fil}")
+	@Autowired
+	FilmeService filme;
+	
+	@RequestMapping("/filme-id/{id}")
+	@ResponseBody
+	public Optional<Filme> getFilmeById(@PathVariable(value= "id") Integer id){
+		return filme.findById(id);
+	}
+	
+	@GetMapping("/filme-nome/{fil}")
 	@ResponseBody
 	public List<Filme> getFilme(@PathVariable(value= "fil") String fil){
 		return filme.findByName(fil);
@@ -49,12 +57,6 @@ public class ControllerFilme {
 		return filme.saveFilme(fil);
 	}
 	
-	@PostMapping(value = "/salvar-diretor", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	@ResponseBody
-	public Diretor saveDiretor(@RequestBody Diretor dir){
-		return diretor.saveDiretor(dir);
-	}
-	
 	@GetMapping(value = "/delete-filme/{id}")
 	@ResponseBody
 	public String deleteFilmeById(@PathVariable(value= "id") Integer id) {
@@ -62,10 +64,9 @@ public class ControllerFilme {
 		return "Filme de id " + id + " deletado.";
 	}
 	
-	@GetMapping(value = "/delete-diretor/{id}")
+	@PostMapping(value = "/salvar-diretor", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public String deleteDiretorById(@PathVariable(value= "id") Integer id){
-		diretor.deleteDiretor(id);
-		return "Autor de id " + id + " deletado.";
+	public Diretor saveDiretor(@RequestBody Diretor dir){
+		return diretor.saveDiretor(dir);
 	}
 }
