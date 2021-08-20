@@ -2,7 +2,6 @@ package com.APITeste.API.Controller;
 
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,7 +15,7 @@ import com.APITeste.API.models.Usuario;
 
 @RestController
 @RequestMapping("/")
-public class UsuarioController {
+public class ControllerUsuario {
 	
 	UsuarioService usuario;
 	
