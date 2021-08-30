@@ -4,10 +4,10 @@ import java.util.List;
 import java.util.Optional;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.APITeste.API.Services.UsuarioService;
@@ -21,7 +21,7 @@ public class ControllerUsuario {
 	
 	@RequestMapping("/usuario/{id}")
 	@ResponseBody
-	public Optional<Usuario> getUsuario(@RequestParam Integer id){
+	public Optional<Usuario> getUsuario(@PathVariable(value= "id") Integer id){
 		return usuario.findById(id);
 	}
 	
@@ -39,7 +39,7 @@ public class ControllerUsuario {
 	
 	@GetMapping(value = "/delete-usuario/{id}")
 	@ResponseBody
-	public String deleteUsuarioById(@RequestParam Integer id) {
+	public String deleteUsuarioById(@PathVariable(value= "id") Integer id) {
 		usuario.deleteUsuario(id);
 		return "Categoria de id " + id + " deletada.";
 	}
