@@ -23,7 +23,7 @@ public class FilmeService {
 		return filme.searchName(fil);
 	}
 	
-	public List<Filme> findByCategoria(Integer id){
+	public List<Filme> findByCategoria(Long id){
 		Optional<Categoria> cat = categoria.findById(id);
 		List<Filme> fil = new ArrayList<Filme>();
 		if (cat.isPresent()) {
@@ -32,7 +32,7 @@ public class FilmeService {
 		return fil;
 	}
 	
-	public Optional<Filme> findById(Integer id){
+	public Optional<Filme> findById(Long id){
 		return filme.findById(id);
 	}
 	
@@ -44,7 +44,7 @@ public class FilmeService {
 		return filme.save(fil);
 	}
 	
-	public void deleteFilme(Integer fil){
-		filme.deleteById(fil);
+	public void deleteFilme(Long id){
+		filme.deleteById(id);
 	}
 }

@@ -20,11 +20,11 @@ public class Idioma {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "Id")
-	public int id;
+	private Long id;
 	
 	@Column(name = "Idioma", nullable = false)
-	public String idioma;
+	private String idioma;
 	
 	@Column(name = "Tag", nullable = false)
-	public String tag;
+	private String tag;
 }

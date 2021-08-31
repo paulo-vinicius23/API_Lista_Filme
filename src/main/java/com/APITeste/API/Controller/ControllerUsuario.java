@@ -21,7 +21,7 @@ public class ControllerUsuario {
 	
 	@RequestMapping("/usuario/{id}")
 	@ResponseBody
-	public Optional<Usuario> getUsuario(@PathVariable(value= "id") Integer id){
+	public Optional<Usuario> getUsuario(@PathVariable(value= "id") Long id){
 		return usuario.findById(id);
 	}
 	
@@ -39,7 +39,7 @@ public class ControllerUsuario {
 	
 	@GetMapping(value = "/delete-usuario/{id}")
 	@ResponseBody
-	public String deleteUsuarioById(@PathVariable(value= "id") Integer id) {
+	public String deleteUsuarioById(@PathVariable(value= "id") Long id) {
 		usuario.deleteUsuario(id);
 		return "Categoria de id " + id + " deletada.";
 	}

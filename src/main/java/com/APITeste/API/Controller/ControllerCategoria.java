@@ -23,7 +23,7 @@ public class ControllerCategoria {
 		
 		@RequestMapping("/categoria/{id}")
 		@ResponseBody
-		public Optional<Categoria> getCategoria(@PathVariable(value= "id") Integer id){
+		public Optional<Categoria> getCategoria(@PathVariable(value= "id") Long id){
 			return categoria.findById(id);
 		}
 		
@@ -41,7 +41,7 @@ public class ControllerCategoria {
 		
 		@GetMapping(value = "/delete-categoria/{id}")
 		@ResponseBody
-		public String deleteCategoriaById(@PathVariable(value= "id") Integer id){
+		public String deleteCategoriaById(@PathVariable(value= "id") Long id){
 			categoria.deleteCategoria(id);
 			return "Categoria de id " + id + " deletada.";
 		}

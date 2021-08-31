@@ -20,7 +20,7 @@ public class Diretor{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "Id")
-	public int id;
+	public Long id;
 	
 	@Column(name = "Diretor", nullable = false)
 	public String diretor;

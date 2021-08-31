@@ -1,6 +1,6 @@
 package com.APITeste.API.models;
 
-import java.util.ArrayList; 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import javax.persistence.Column;
@@ -30,28 +30,28 @@ public class Usuario implements UserDetails{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "Id")
-	public int id;
-	
+	private Long id;
+
 	@ManyToMany(fetch = FetchType.EAGER)
 	public List<Perfil> PerfilList = new ArrayList<>(); 
 			
 	@Column(name = "Nome", nullable = false)
-	public String nome;
+	private String nome;
 			
 	@Column(name = "Cpf", nullable = false)
-	public String cpf;
+	private String cpf;
 			
 	@Column(name = "Telefone", nullable = false)
-	public String telefone;
+	private String telefone;
 			
 	@Column(name = "Email", nullable = false)
-	public String email;
+	private String email;
 			
 	@Column(name = "Perfil", nullable = false)
-	public String perfil;
+	private String perfil;
 			
 	@Column(name = "Senha", nullable = false)
-	public String senha;
+	private String senha;
 			
 	@ManyToOne
 	public Idioma idioma;
@@ -89,5 +89,13 @@ public class Usuario implements UserDetails{
 	@Override
 	public boolean isEnabled() {
 		return true;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 }

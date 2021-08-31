@@ -10,4 +10,8 @@ import com.APITeste.API.models.Usuario;
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer>{
 	
 	Optional<Usuario> findByEmail(String email);
+
+	Optional<Usuario> findById(Long id);
+
+	void deleteById(Long usu);
 }

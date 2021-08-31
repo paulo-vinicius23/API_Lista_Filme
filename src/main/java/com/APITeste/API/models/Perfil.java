@@ -9,11 +9,13 @@ import javax.persistence.Table;
 
 import org.springframework.security.core.GrantedAuthority;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
+@AllArgsConstructor
 @Entity
 @Table(name = "Perfil")
 public class Perfil implements GrantedAuthority{
@@ -23,9 +25,9 @@ public class Perfil implements GrantedAuthority{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "Id")
-	public int id;
+	private Long id;
 	
-	public String nome;
+	private String nome;
 
 	@Override
 	public String getAuthority() {

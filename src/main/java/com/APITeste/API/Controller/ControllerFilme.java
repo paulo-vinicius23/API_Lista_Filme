@@ -28,7 +28,7 @@ public class ControllerFilme {
 	
 	@RequestMapping("/filme-id/{id}")
 	@ResponseBody
-	public Optional<Filme> getFilmeById(@PathVariable(value= "id") Integer id){
+	public Optional<Filme> getFilmeById(@PathVariable(value= "id") Long id){
 		return filme.findById(id);
 	}
 	
@@ -40,7 +40,7 @@ public class ControllerFilme {
 	
 	@GetMapping("/filme-categoria/{id}")
 	@ResponseBody
-	public List<Filme> getFilmeByCategoria(@PathVariable(value= "id") Integer id){
+	public List<Filme> getFilmeByCategoria(@PathVariable(value= "id") Long id){
 		List<Filme> fil = filme.findByCategoria(id);
 		return fil;
 	}
@@ -59,7 +59,7 @@ public class ControllerFilme {
 	
 	@GetMapping(value = "/delete-filme/{id}")
 	@ResponseBody
-	public String deleteFilmeById(@PathVariable(value= "id") Integer id) {
+	public String deleteFilmeById(@PathVariable(value= "id") Long id) {
 		filme.deleteFilme(id);
 		return "Filme de id " + id + " deletado.";
 	}

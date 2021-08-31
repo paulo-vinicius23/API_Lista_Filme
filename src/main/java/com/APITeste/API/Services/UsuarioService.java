@@ -13,7 +13,7 @@ public class UsuarioService {
 	@Autowired
 	UsuarioRepository usuario;
 	
-	public Optional<Usuario> findById(Integer Id){
+	public Optional<Usuario> findById(Long Id){
 		return usuario.findById(Id);
 	}
 	
@@ -25,7 +25,7 @@ public class UsuarioService {
 		return usuario.save(usu);
 	}
 	
-	public void deleteUsuario(Integer usu){
+	public void deleteUsuario(Long usu){
 		usuario.deleteById(usu);
 	}
 }
