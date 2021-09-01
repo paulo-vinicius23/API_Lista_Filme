@@ -3,7 +3,9 @@ package com.APITeste.API.Controller;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -40,9 +42,16 @@ public class ControllerFilme {
 	
 	@GetMapping("/filme-categoria/{id}")
 	@ResponseBody
-	public List<Filme> getFilmeByCategoria(@PathVariable(value= "id") Long id){
-		List<Filme> fil = filme.findByCategoria(id);
-		return fil;
+	public ResponseEntity<?> getFilmeByCategoria(@PathVariable(value= "id") Long id){
+		try {
+			List<Filme> fil = filme.findByCategoria(id);
+			if (fil == null) {
+				return new ResponseEntity<String>("Categoria Não Encontrada", HttpStatus.NOT_FOUND);
+			}
+			return new ResponseEntity<List<Filme>>(fil, HttpStatus.OK);
+		} catch (Exception ex) {
+			return new ResponseEntity<String>("Categoria Inválida", HttpStatus.BAD_REQUEST);
+		}
 	}
 	
 	@GetMapping(value = "/todos-filmes", produces = MediaType.APPLICATION_JSON_VALUE)

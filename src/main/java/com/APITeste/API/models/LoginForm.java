@@ -1,4 +1,4 @@
-package com.APITeste.API.Controller.form;
+package com.APITeste.API.models;
 
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 

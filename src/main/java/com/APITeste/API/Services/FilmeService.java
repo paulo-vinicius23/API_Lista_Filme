@@ -28,8 +28,9 @@ public class FilmeService {
 		List<Filme> fil = new ArrayList<Filme>();
 		if (cat.isPresent()) {
 			fil = filme.findByCategoria(cat.get());
+			return fil;
 		}
-		return fil;
+		return null;
 	}
 	
 	public Optional<Filme> findById(Long id){

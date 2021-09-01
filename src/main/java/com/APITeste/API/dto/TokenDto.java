@@ -1,4 +1,4 @@
-package com.APITeste.API.Controller.dto;
+package com.APITeste.API.dto;
 
 public class TokenDto {
 

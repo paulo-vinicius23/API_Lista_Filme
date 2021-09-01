@@ -25,5 +25,4 @@ public class AutentcService implements UserDetailsService{
 		}
 		throw new UsernameNotFoundException("Email ou Senha Inválido");
 	}
-
 }

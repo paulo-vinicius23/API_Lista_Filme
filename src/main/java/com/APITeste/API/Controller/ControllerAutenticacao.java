@@ -13,10 +13,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.APITeste.API.Config.Security.TokenService;
-import com.APITeste.API.Controller.dto.TokenDto;
-import com.APITeste.API.Controller.form.LoginForm;
+import com.APITeste.API.dto.TokenDto;
+import com.APITeste.API.models.LoginForm;
 
 @RestController
 @RequestMapping("/")
