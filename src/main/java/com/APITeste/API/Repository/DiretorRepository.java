@@ -6,4 +6,6 @@ import com.APITeste.API.models.Diretor;
 
 @Repository
 public interface DiretorRepository extends JpaRepository<Diretor, Integer>{
+
+	void deleteById(Long id);
 }

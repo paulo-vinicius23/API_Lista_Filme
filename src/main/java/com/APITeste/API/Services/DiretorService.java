@@ -11,7 +11,11 @@ public class DiretorService {
 	@Autowired
 	DiretorRepository diretor;
 	
-	public Diretor saveDiretor(Diretor aut){
-		return diretor.save(aut);
+	public Diretor saveDiretor(Diretor dir){
+		return diretor.save(dir);
+	}
+
+	public void deleteDiretor(Long id) {
+		diretor.deleteById(id);
 	}
 }

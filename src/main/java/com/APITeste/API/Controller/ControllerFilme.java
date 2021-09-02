@@ -65,6 +65,12 @@ public class ControllerFilme {
 	public Filme saveFilme(@RequestBody Filme fil){
 		return filme.saveFilme(fil);
 	}
+
+	@PostMapping(value = "/salvar-diretor", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public Diretor saveDiretor(@RequestBody Diretor dir){
+		return diretor.saveDiretor(dir);
+	}
 	
 	@GetMapping(value = "/delete-filme/{id}")
 	@ResponseBody
@@ -73,9 +79,10 @@ public class ControllerFilme {
 		return "Filme de id " + id + " deletado.";
 	}
 	
-	@PostMapping(value = "/salvar-diretor", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value = "/delete-diretor/{id}")
 	@ResponseBody
-	public Diretor saveDiretor(@RequestBody Diretor dir){
-		return diretor.saveDiretor(dir);
+	public String deleteDiretorById(@PathVariable(value= "id") Long id) {
+		diretor.deleteDiretor(id);
+		return "Diretor de id " + id + " deletado.";
 	}
 }
