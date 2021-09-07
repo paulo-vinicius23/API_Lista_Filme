@@ -30,14 +30,27 @@ public class ControllerFilme {
 	
 	@RequestMapping("/filme-id/{id}")
 	@ResponseBody
-	public Optional<Filme> getFilmeById(@PathVariable(value= "id") Long id){
-		return filme.findById(id);
+	public ResponseEntity<?> getFilmeById(@PathVariable(value= "id") Long id){
+		try {
+			Optional<Filme> fil = filme.findById(id);
+			if (fil.isPresent()) {
+				return new ResponseEntity<Optional<Filme>>(fil, HttpStatus.OK);
+			}
+			return new ResponseEntity<String>("Filme Não Encontrado", HttpStatus.NOT_FOUND);
+		} catch(Exception ex) {
+			return new ResponseEntity<String>("Filme Inválido", HttpStatus.BAD_REQUEST);
+		}
 	}
 	
 	@GetMapping("/filme-nome/{fil}")
 	@ResponseBody
-	public List<Filme> getFilme(@PathVariable(value= "fil") String fil){
-		return filme.findByName(fil);
+	public ResponseEntity<?> getFilme(@PathVariable(value= "fil") String fil){
+		try {
+			List<Filme> film = filme.findByName(fil);
+			return new ResponseEntity<List<Filme>>(film, HttpStatus.OK);
+		} catch(Exception ex) {
+			return new ResponseEntity<String>("Filme inválido", HttpStatus.BAD_REQUEST);
+		}
 	}
 	
 	@GetMapping("/filme-categoria/{id}")
@@ -56,33 +69,56 @@ public class ControllerFilme {
 	
 	@GetMapping(value = "/todos-filmes", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public List<Filme> getAllFilme(){
-		return filme.findAll();
+	public ResponseEntity<?> getAllFilme(){
+		try {
+			List<Filme> film = filme.findAll();
+			return new ResponseEntity<List<Filme>>(film, HttpStatus.OK);
+		} catch (Exception ex) {
+			return new ResponseEntity<String>("Erro Desconhecido", HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 	}
 	
 	@PostMapping(value = "/salvar-filme", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public Filme saveFilme(@RequestBody Filme fil){
-		return filme.saveFilme(fil);
+	public ResponseEntity<?> saveFilme(@RequestBody Filme fil){
+		try {
+			Filme film = filme.saveFilme(fil);
+			return new ResponseEntity<Filme>(film, HttpStatus.OK);
+		} catch (Exception ex) {
+			return new ResponseEntity<String>("Erro Desconhecido", HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 	}
 
 	@PostMapping(value = "/salvar-diretor", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public Diretor saveDiretor(@RequestBody Diretor dir){
-		return diretor.saveDiretor(dir);
+	public ResponseEntity<?> saveDiretor(@RequestBody Diretor dir){
+		try {
+			Diretor direr = diretor.saveDiretor(dir);
+			return new ResponseEntity<Diretor>(direr, HttpStatus.OK);
+		} catch (Exception ex) {
+			return new ResponseEntity<String>("Erro Desconhecido", HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 	}
 	
 	@GetMapping(value = "/delete-filme/{id}")
 	@ResponseBody
-	public String deleteFilmeById(@PathVariable(value= "id") Long id) {
-		filme.deleteFilme(id);
-		return "Filme de id " + id + " deletado.";
+	public ResponseEntity<String> deleteFilmeById(@PathVariable(value= "id") Long id) {
+		try {
+			filme.deleteFilme(id);
+			return new ResponseEntity<String>("Filme de id " + id + " deletado.", HttpStatus.OK);
+		} catch (Exception ex) {
+			return new ResponseEntity<String>("Erro Desconhecido", HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 	}
 	
 	@GetMapping(value = "/delete-diretor/{id}")
 	@ResponseBody
-	public String deleteDiretorById(@PathVariable(value= "id") Long id) {
-		diretor.deleteDiretor(id);
-		return "Diretor de id " + id + " deletado.";
+	public ResponseEntity<String> deleteDiretorById(@PathVariable(value= "id") Long id) {
+		try {
+			diretor.deleteDiretor(id);
+			return new ResponseEntity<String>("Diretor de id " + id + " deletado.", HttpStatus.OK);
+		} catch (Exception ex) {
+			return new ResponseEntity<String>("Erro Desconhecido", HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 	}
 }
