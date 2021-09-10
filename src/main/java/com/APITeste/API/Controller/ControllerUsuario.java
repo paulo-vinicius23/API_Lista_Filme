@@ -3,6 +3,8 @@ package com.APITeste.API.Controller;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -49,7 +51,7 @@ public class ControllerUsuario {
 	
 	@PostMapping(value = "/salvar-usuario", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public ResponseEntity<?> saveUsuario(@RequestBody Usuario usu){
+	public ResponseEntity<?> saveUsuario(@RequestBody @Valid Usuario usu){
 		try {
 			Usuario usua = usuario.saveUsuario(usu);
 			return new ResponseEntity<Usuario>(usua, HttpStatus.OK);

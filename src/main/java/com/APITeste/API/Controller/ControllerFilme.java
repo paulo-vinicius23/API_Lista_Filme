@@ -2,6 +2,9 @@ package com.APITeste.API.Controller;
 
 import java.util.List;
 import java.util.Optional;
+
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -80,7 +83,7 @@ public class ControllerFilme {
 	
 	@PostMapping(value = "/salvar-filme", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public ResponseEntity<?> saveFilme(@RequestBody Filme fil){
+	public ResponseEntity<?> saveFilme(@RequestBody @Valid Filme fil){
 		try {
 			Filme film = filme.saveFilme(fil);
 			return new ResponseEntity<Filme>(film, HttpStatus.OK);
@@ -91,7 +94,7 @@ public class ControllerFilme {
 
 	@PostMapping(value = "/salvar-diretor", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public ResponseEntity<?> saveDiretor(@RequestBody Diretor dir){
+	public ResponseEntity<?> saveDiretor(@RequestBody @Valid Diretor dir){
 		try {
 			Diretor direr = diretor.saveDiretor(dir);
 			return new ResponseEntity<Diretor>(direr, HttpStatus.OK);

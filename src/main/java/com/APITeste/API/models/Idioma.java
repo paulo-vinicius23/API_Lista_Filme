@@ -6,6 +6,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -22,9 +27,9 @@ public class Idioma {
 	@Column(name = "Id")
 	public Long id;
 	
-	@Column(name = "Idioma", nullable = false)
+	@Column(name = "Idioma") @NotBlank @NotEmpty
 	public String idioma;
 	
-	@Column(name = "Tag", nullable = false)
+	@Column(name = "Tag") @NotBlank @NotEmpty @Length(max = 3)
 	public String tag;
 }

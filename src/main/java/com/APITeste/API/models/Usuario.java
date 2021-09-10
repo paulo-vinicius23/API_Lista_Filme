@@ -12,6 +12,10 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import lombok.AllArgsConstructor;
@@ -32,25 +36,25 @@ public class Usuario implements UserDetails{
 	@Column(name = "Id")
 	private Long id;
 
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.EAGER) @NotBlank @NotEmpty
 	public List<Perfil> PerfilList = new ArrayList<>(); 
 			
-	@Column(name = "Nome", nullable = false)
+	@Column(name = "Nome") @NotBlank @NotEmpty
 	private String nome;
 			
-	@Column(name = "Cpf", nullable = false)
+	@Column(name = "Cpf") @NotBlank @NotEmpty @Length(min = 14, max = 14)
 	private String cpf;
 			
-	@Column(name = "Telefone", nullable = false)
+	@Column(name = "Telefone") @NotBlank @NotEmpty @Length(min = 11,max = 14)
 	private String telefone;
 			
-	@Column(name = "Email", nullable = false)
+	@Column(name = "Email") @NotBlank @NotEmpty
 	private String email;
 			
-	@Column(name = "Perfil", nullable = false)
+	@Column(name = "Perfil") @NotBlank @NotEmpty
 	private String perfil;
 			
-	@Column(name = "Senha", nullable = false)
+	@Column(name = "Senha") @NotBlank @NotEmpty @Length(min = 8)
 	private String senha;
 			
 	@ManyToOne

@@ -2,6 +2,9 @@ package com.APITeste.API.Controller;
 
 import java.util.List;
 import java.util.Optional;
+
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -50,7 +53,7 @@ public class ControllerCategoria {
 		
 		@PostMapping(value = "/salvar-categoria", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 		@ResponseBody
-		public ResponseEntity<?> saveCategoria(@RequestBody Categoria cat){
+		public ResponseEntity<?> saveCategoria(@RequestBody @Valid Categoria cat){
 			try {
 				Categoria cate = categoria.saveCategoria(cat);
 				return new ResponseEntity<Categoria>(cate, HttpStatus.OK);
