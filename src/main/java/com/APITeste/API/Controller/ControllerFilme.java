@@ -16,17 +16,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import com.APITeste.API.Services.DiretorService;
 import com.APITeste.API.Services.FilmeService;
-import com.APITeste.API.models.Diretor;
 import com.APITeste.API.models.Filme;
 
 @RestController
 @RequestMapping("/")
 public class ControllerFilme {
-	
-	@Autowired
-	DiretorService diretor;
 	
 	@Autowired
 	FilmeService filme;
@@ -91,17 +86,6 @@ public class ControllerFilme {
 			return new ResponseEntity<String>("Erro Desconhecido", HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
-
-	@PostMapping(value = "/salvar-diretor", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	@ResponseBody
-	public ResponseEntity<?> saveDiretor(@RequestBody @Valid Diretor dir){
-		try {
-			Diretor direr = diretor.saveDiretor(dir);
-			return new ResponseEntity<Diretor>(direr, HttpStatus.OK);
-		} catch (Exception ex) {
-			return new ResponseEntity<String>("Erro Desconhecido", HttpStatus.INTERNAL_SERVER_ERROR);
-		}
-	}
 	
 	@GetMapping(value = "/delete-filme/{id}")
 	@ResponseBody
@@ -109,17 +93,6 @@ public class ControllerFilme {
 		try {
 			filme.deleteFilme(id);
 			return new ResponseEntity<String>("Filme de id " + id + " deletado.", HttpStatus.OK);
-		} catch (Exception ex) {
-			return new ResponseEntity<String>("Erro Desconhecido", HttpStatus.INTERNAL_SERVER_ERROR);
-		}
-	}
-	
-	@GetMapping(value = "/delete-diretor/{id}")
-	@ResponseBody
-	public ResponseEntity<String> deleteDiretorById(@PathVariable(value= "id") Long id) {
-		try {
-			diretor.deleteDiretor(id);
-			return new ResponseEntity<String>("Diretor de id " + id + " deletado.", HttpStatus.OK);
 		} catch (Exception ex) {
 			return new ResponseEntity<String>("Erro Desconhecido", HttpStatus.INTERNAL_SERVER_ERROR);
 		}

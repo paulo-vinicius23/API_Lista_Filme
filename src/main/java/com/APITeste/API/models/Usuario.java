@@ -1,6 +1,6 @@
 package com.APITeste.API.models;
 
-import java.util.ArrayList;
+import java.util.ArrayList; 
 import java.util.Collection;
 import java.util.List;
 import javax.persistence.Column;
@@ -10,7 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.Length;
@@ -56,9 +55,6 @@ public class Usuario implements UserDetails{
 			
 	@Column(name = "Senha") @NotBlank @NotEmpty @Length(min = 8)
 	private String senha;
-			
-	@ManyToOne
-	public Idioma idioma;
 	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {

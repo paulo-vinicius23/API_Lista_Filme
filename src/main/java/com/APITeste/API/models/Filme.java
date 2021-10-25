@@ -31,7 +31,7 @@ public class Filme{
 	@Column(name = "Filme") @NotBlank @NotEmpty @Length(min = 2)
 	public String filme;
 	
-	@Column(name = "Ano") @NotBlank @NotEmpty @Length(min = 4, max = 4)
+	@Column(name = "Ano") @NotBlank @NotEmpty
 	public String ano;
 	
 	@Column(name = "Imagem") @NotBlank @NotEmpty
@@ -40,18 +40,12 @@ public class Filme{
 	@Column(name = "Sinopse") @NotBlank @NotEmpty @Length(max = 500)
 	public String sinopse;
 	
-	@Column(name = "Duração") @NotBlank @NotEmpty @Length(min = 7, max = 7)
+	@Column(name = "Duração") @NotBlank @NotEmpty
 	public String duracao;
 	
-	@Column(name = "Nota") @NotBlank @NotEmpty
-	public double nota;
-	
-	@ManyToOne
-	public Diretor diretor;
+	@Column(name = "Diretor") @NotBlank @NotEmpty
+	public String diretor;
 	
 	@ManyToOne
 	public Categoria categoria;
-	
-	@ManyToOne
-	public Idioma idioma;
 }

@@ -42,6 +42,12 @@ public class FilmeService {
 	}
 	
 	public Filme saveFilme(Filme fil){
+		if (fil.categoria != null) {
+			Optional<Categoria> cat = categoria.findById(fil.categoria.id);
+			if (cat.isPresent()) {
+				fil.categoria = cat.get();
+			}
+		}
 		return filme.save(fil);
 	}
 	
